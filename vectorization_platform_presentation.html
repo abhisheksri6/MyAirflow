@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Context Craft: Vectorization Platform Slides</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f8f9fa; }
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      padding: 40px;
+      box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      background: white;
+      border-bottom: 1px solid #ddd;
+    }
+    .slide.active { display: flex; }
+    h1, h2 { color: #333; margin-bottom: 20px; }
+    ul { padding-left: 20px; }
+    .controls { position: fixed; bottom: 20px; right: 20px; }
+    button { padding: 10px 20px; margin-left: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<div class="slide active">
+  <h1>Context Craft: Intelligent Document Vectorization Platform</h1>
+  <p><strong>AI-Powered Search and Metadata Enrichment for Unstructured Content</strong></p>
+</div>
+
+<div class="slide">
+  <h2>Why This Platform?</h2>
+  <ul>
+    <li>Enables fast, intelligent search across unstructured documents</li>
+    <li>Reduces manual data handling by over 70%</li>
+    <li>Built-in pipeline tracking and quality metrics</li>
+    <li>Flexible integration with existing systems</li>
+    <li>GenAI-ready for scalable use cases</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Business Impact</h2>
+  <ul>
+    <li>Improved discovery through vector search</li>
+    <li>Faster insights with automated pipelines</li>
+    <li>Plug & play integration with your data sources</li>
+    <li>Compliance via document-level logging</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Solution Architecture</h2>
+  <ul>
+    <li><strong>Frontend:</strong> React UI for pipeline setup and control</li>
+    <li><strong>API Layer:</strong> FastAPI handles UI interaction, routes to Airflow</li>
+    <li><strong>Workflow Engine:</strong> Apache Airflow DAGs manage document processing</li>
+    <li><strong>Vector DB:</strong> Qdrant stores chunk embeddings</li>
+    <li><strong>Metrics DB:</strong> Postgres tracks logs and metrics</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Component Overview</h2>
+  <ul>
+    <li><strong>Frontend:</strong> React + ShadCN UI</li>
+    <li><strong>API Layer:</strong> FastAPI for dynamic API generation</li>
+    <li><strong>Workflow:</strong> Apache Airflow with parameterized DAGs</li>
+    <li><strong>Storage:</strong> Qdrant for vectors, Postgres for metrics</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Pipeline Workflow</h2>
+  <ol>
+    <li>Import Documents</li>
+    <li>File Type Detection</li>
+    <li>OCR / Text Extraction</li>
+    <li>Text Chunking</li>
+    <li>Vectorization via Embedding Model</li>
+    <li>Store in Vector DB</li>
+    <li>Log to Postgres</li>
+  </ol>
+</div>
+
+<div class="slide">
+  <h2>Dynamic Search API Generation</h2>
+  <ul>
+    <li>APIs created based on form inputs</li>
+    <li>Supports top_k, filters, model config, etc.</li>
+    <li>Mounted via FastAPI routers dynamically</li>
+    <li>Accessible through status endpoint</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Usage Tracking and Metrics</h2>
+  <ul>
+    <li>PostgreSQL logs each document and pipeline config</li>
+    <li>Pipeline name, parser, chunking, model</li>
+    <li>Processing time, success/failure status</li>
+    <li>Frontend displays usage stats and trends</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Frontend Experience</h2>
+  <ul>
+    <li>Multi-step wizard for building pipelines</li>
+    <li>Search API creation tool</li>
+    <li>Live dashboard: active APIs, stats, logs</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Deployment & Operations</h2>
+  <ul>
+    <li>Dockerized services: Airflow, FastAPI, Qdrant, Postgres</li>
+    <li>Airflow 3.0.2 with dynamic DAG creation</li>
+    <li>Runs in WSL2 / Docker Desktop</li>
+    <li>CI/CD ready</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Roadmap</h2>
+  <ul>
+    <li>Short Term: more parsers, LLM-based extraction, retry logic</li>
+    <li>Mid Term: AuthN/AuthZ, DMS integrations, LLM QA interface</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Questions & Discussion</h2>
+  <p>Let’s explore how this aligns with your needs.</p>
+</div>
+
+<div class="controls">
+  <button onclick="prevSlide()">⬅ Prev</button>
+  <button onclick="nextSlide()">Next ➡</button>
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  function showSlide(index) {
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+  }
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+  function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  }
+</script>
+
+</body>
+</html>
